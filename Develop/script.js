@@ -1,21 +1,30 @@
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elementshour9
 // in the html.
-var hour9 = $("#hour-9")
-var hour10 = $("#hour-10")
-var hour11 = $("#hour-11")
-var hour12 = $("#hour-12")
-var hour13 = $("#hour-13")
-var hour14 = $("#hour-14")
-var hour15 = $("#hour-15")
-var hour16 = $("#hour-16")
-var hour17 = $("#hour-17")
+
 var today = dayjs()
-$('#currentDay').text(today.format('dddd, MMMM D, YYYY'))
-
 var time = today.format('H')
-console.log(time);
 
+var hours = [$("#hour-9"), $("#hour-10"), $("#hour-11"), $("#hour-12"), $("#hour-13"), $("#hour-14"), $("#hour-15"), $("#hour-16"), $("#hour-17")]
+
+$('#currentDay').text(today.format('H, dddd, MMMM D, YYYY'))
+
+console.log(time);
+for (let i = 0; i < hours.length; i++) {
+  const hour = i + 9;
+  console.log(hour);
+  if (hour < time) {
+    hours[i].children(".description").attr("class", "col-8 col-md-10 description past")
+  }
+  else if (hour == time) {
+    hours[i].children(".description").attr("class", "col-8 col-md-10 description present")
+  }
+  else if (hour > time) {
+    hours[i].children(".description").attr("class", "col-8 col-md-10 description future")
+  }
+
+
+}
 $(function () {
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
