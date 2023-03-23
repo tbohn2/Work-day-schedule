@@ -3,29 +3,31 @@
 // in the html.
 
 var today = dayjs()
-var time = today.format('H')
+// var time = today.format('H')
+var time = 10
 
 var hours = [$("#hour-9"), $("#hour-10"), $("#hour-11"), $("#hour-12"), $("#hour-13"), $("#hour-14"), $("#hour-15"), $("#hour-16"), $("#hour-17")]
 
-$('#currentDay').text(today.format('H, dddd, MMMM D, YYYY'))
+$('#currentDay').text(today.format('dddd, MMMM D, YYYY'))
 
 console.log(time);
 for (let i = 0; i < hours.length; i++) {
   const hour = i + 9;
   console.log(hour);
   if (hour < time) {
-    hours[i].children(".description").attr("class", "col-8 col-md-10 description past")
+    hours[i].children(".description").addClass("past")
   }
   else if (hour == time) {
-    hours[i].children(".description").attr("class", "col-8 col-md-10 description present")
+    hours[i].children(".description").addClass("present")
   }
   else if (hour > time) {
-    hours[i].children(".description").attr("class", "col-8 col-md-10 description future")
+    hours[i].children(".description").addClass("future")
   }
 
 
 }
 $(function () {
+
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
   // local storage. HINT: What does `this` reference in the click listener
