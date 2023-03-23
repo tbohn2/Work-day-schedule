@@ -1,7 +1,8 @@
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elementshour9
 // in the html.
-
+var button = $(".saveBtn")
+var input = $(".description")
 var today = dayjs()
 // var time = today.format('H')
 var time = 10
@@ -10,10 +11,8 @@ var hours = [$("#hour-9"), $("#hour-10"), $("#hour-11"), $("#hour-12"), $("#hour
 
 $('#currentDay').text(today.format('dddd, MMMM D, YYYY'))
 
-console.log(time);
 for (let i = 0; i < hours.length; i++) {
   const hour = i + 9;
-  console.log(hour);
   if (hour < time) {
     hours[i].children(".description").addClass("past")
   }
@@ -23,11 +22,22 @@ for (let i = 0; i < hours.length; i++) {
   else if (hour > time) {
     hours[i].children(".description").addClass("future")
   }
-
-
 }
-$(function () {
 
+button.on("click", function (event) {
+  var btnClicked = $(event.target)
+  var todo = btnClicked.siblings(".description").val()
+  var key = btnClicked.parents().attr("id")
+  console.log(key)
+  console.log(todo);
+  // get id of parent and make that key
+  localStorage.setItem(key, todo)
+  // localStorage.setItem("key", JSON.stringify(var))
+})
+
+// localStorage.getItem("key")
+// $(function () {
+// 
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
   // local storage. HINT: What does `this` reference in the click listener
@@ -46,4 +56,4 @@ $(function () {
   // attribute of each time-block be used to do this?
   //
   // TODO: Add code to display the current date in the header of the page.
-});
+// });
