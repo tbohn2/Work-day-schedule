@@ -10,7 +10,7 @@ This application is a work-day schedule in which the user types their daily even
 
 https://tbohn2.github.io/Work-day-schedule/
 
-![Workday_schedule_screenshot](assets\tbohn2.github.io_Work-day-schedule_.png)
+![tbohn2 github io_Work-day-schedule_ (1)](https://user-images.githubusercontent.com/124842865/228134341-30d6793c-d9a0-4b52-9e0e-2e50511e2dee.png)
 
 ## Installation
 
